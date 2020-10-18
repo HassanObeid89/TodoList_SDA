@@ -11,7 +11,7 @@ public class TaskInput {
 
     private int option, taskNo;
     private boolean setExit = false;
-    private String inputText1, inputText2, inputText3,inputText4;
+    private String  taskName, projectName,status, taskDate;
     private int changeField;
     private TodoDemo demo;
     private Date date;
@@ -42,41 +42,31 @@ public void displayOption() throws ParseException
 
         while(!(setExit))
         {
-            /*
-             *  Display the To do list task
-             */
+
             if(option == 1)
             {
                 displayTask();
             }
 
-            /*
-             *  Add new task to the list
-             */
+
             if(option == 2)
             {
                 addTask();
             }
 
-            /*
-             *  Edit the Todo List
-             */
+
             if(option == 3)
             {
                 editTask();
             }
 
-            /*
-             * Delete the task from the list
-             */
+
             if (option == 4)
             {
                 deleteTask();
             }
 
-            /*
-             *  Save and Exit
-             */
+
             if(option == 5)
             {
                 saveExitTask();
@@ -87,15 +77,15 @@ public void displayOption() throws ParseException
     private void addTask() throws ParseException
     {
         System.out.println("Enter the Task name   :  ");
-        inputText1 = scanString();
+        taskName = scanString();
         System.out.println("Enter the ProjectName :  ");
-        inputText2 = scanString();
+        projectName = scanString();
         System.out.println("Enter the Status      :  ");
-        inputText3 = scanString();
+        status = scanString();
         System.out.println("Enter the TaskDate(yyyy-MM-dd)      :  ");
-        inputText4 = scanString();
+        taskDate = scanString();
         try{
-            date = formatter.parse(inputText4);
+            date = formatter.parse(taskDate);
 
         }catch(ParseException p)
         {
@@ -103,7 +93,7 @@ public void displayOption() throws ParseException
         }
 
         try{
-            demo.addRecord(inputText1,inputText2,inputText3,date);
+            demo.addRecord(taskName,projectName,status,date);
             System.out.println("Enter the option");
             option = scanInput();
         }catch(IOException f)
@@ -122,8 +112,14 @@ public void displayOption() throws ParseException
     private int scanInput()
     {
         Scanner sc = new Scanner(System.in);
-        sc.nextInt();
-        return sc.nextInt();
+//        sc.nextInt();
+//        sc.nextLine();
+//        sc.next();
+       // return sc.nextInt();
+       return Integer.valueOf(sc.nextLine());
+
+
+
     }
 
     private void editTask() throws ParseException
@@ -140,11 +136,11 @@ public void displayOption() throws ParseException
         if (option ==1)
         {
             System.out.println("Edit the Task Name : " );
-            inputText1 = scanString();
+            taskName = scanString();
             changeField = 1;
             try
             {
-                demo.editRecord(taskNo,inputText1,changeField);
+                demo.editRecord(taskNo,taskName,changeField);
             }catch (IOException e) {
 
                 System.out.println("Error occurred while trying to edit Task Name");
@@ -156,10 +152,10 @@ public void displayOption() throws ParseException
         if (option == 2)
         {
             System.out.println("Edit the Project Name : ");
-            inputText2 = scanString();
+            projectName = scanString();
             changeField = 2;
             try{
-                demo.editRecord(taskNo,inputText2,changeField);
+                demo.editRecord(taskNo,projectName,changeField);
 
             }catch(IOException f)
             {
@@ -172,11 +168,11 @@ public void displayOption() throws ParseException
         if (option == 3)
         {
             System.out.println("Edit the status : ");
-            inputText3 = scanString();
+            status = scanString();
             changeField = 3;
             try
             {
-                demo.editRecord(taskNo,inputText3,changeField);
+                demo.editRecord(taskNo,status,changeField);
             }catch (IOException g) {
                 System.out.println("Error occurred while trying to edit Status");
             }
@@ -186,11 +182,11 @@ public void displayOption() throws ParseException
         if (option == 4)
         {
             System.out.println("Edit the TaskDate(yyyy-MM-dd) : ");
-            inputText4 = scanString();
+            taskDate = scanString();
             changeField = 4;
             try
             {
-                demo.editRecord(taskNo,inputText4,changeField);
+                demo.editRecord(taskNo,taskDate,changeField);
             }catch (IOException g) {
                 System.out.println("Error occurred while trying to edit Date");
             }
@@ -203,8 +199,11 @@ public void displayOption() throws ParseException
     public String scanString()
     {
         Scanner sc = new Scanner(System.in);
-       sc.nextLine();
-        return sc.nextLine();
+
+        //sc.nextLine();
+        //sc.next();
+       // return sc.nextLine();
+        return String.valueOf(sc.nextLine());
     }
 
     private void deleteTask()
