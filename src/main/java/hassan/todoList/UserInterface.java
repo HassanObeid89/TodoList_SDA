@@ -1,21 +1,19 @@
 
 package hassan.todoList;
 
-import javax.swing.*;
+
 import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Scanner;
 
-public class TodoDemo {
-    private ArrayList<Task> todoList = new ArrayList<>();
+public class UserInterface extends FileHandler{
+
     private int statusOpen = 0, statusClosed = 0;
-    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    String filename = null;
+
 
 
 
@@ -59,7 +57,7 @@ public class TodoDemo {
                         statusClosed = statusClosed + 1;
                     }
                 }
-                System.out.println("Number of Tasks open : " + statusOpen + "\n Number of Tasks Closed : " + statusClosed);
+                System.out.println("Number of Tasks open : " + statusOpen +"\nNumber of Tasks Closed : " + statusClosed);
                 statusOpen = 0;
                 statusClosed = 0;
 
@@ -80,47 +78,7 @@ public class TodoDemo {
 
     }
 
-    /**
-     * Function to read data from the input file.
-     * @throws IOException throws an exception when reading failed.
-     */
-    public void inputReader() throws IOException
-    {
-        Date date = null;
-        JFileChooser chooser = new JFileChooser();
 
-        File file = null;
-        int returnValue = chooser.showOpenDialog( null ) ;
-        if( returnValue == JFileChooser.APPROVE_OPTION )
-        {
-            file = chooser.getSelectedFile() ;
-        }
-        if(file != null)
-        {
-            filename = file.getPath();
-        }
-
-        BufferedReader inpFile = new BufferedReader(new FileReader(filename));
-        String str;
-        try{
-            while((str = inpFile.readLine()) != null)
-            {
-                String str1 = str.toString();
-                String[] arr = str1.split(";");
-                try{
-                    date = formatter.parse(arr[3]);
-                }catch(ParseException p){
-                    System.out.println("Error while reading the Date field");
-                }
-
-                todoList.add(new Task(arr[0],arr[1],arr[2],date));
-
-            }
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     /**
      * Function to add new task and check the date of the task with the current date.
@@ -149,14 +107,7 @@ public class TodoDemo {
 
     }
 
-    /**
-     *
-     * @param editIndex
-     * @param inputField
-     * @param changeField
-     * @throws IOException
-     * @throws ParseException
-     */
+
     public void editRecord(int editIndex,String inputField,int changeField) throws IOException, ParseException
 
     {
@@ -215,16 +166,6 @@ public class TodoDemo {
 
 
 
-    public void outputWriter() throws IOException
-    {
-        BufferedWriter writer = new  BufferedWriter(new FileWriter(filename));
 
-        for (Task out: todoList)
-        {
-            writer.write(out.getTaskName() + ";"+out.getProjectName()+";"+out.getStatus()+ ";"+ formatter.format(out.getTaskDate())+"\n");
-        }
-
-        writer.close();
-    }
 
 }

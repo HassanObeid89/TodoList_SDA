@@ -61,8 +61,10 @@ class TodoDemoTest
     void AddElementFailure()
     {
 
-        assertEquals("test", taskList.get(0).getTaskName());
-        assertEquals("test project", taskList.get(0).getProjectName());
+        Task task5 = new Task("test", "test Project", "Open", date);
+        taskList.add(task5);
+        assertEquals("Test", taskList.get(0).getTaskName());
+        assertEquals("Test Project", taskList.get(0).getProjectName());
         assertEquals("Open", taskList.get(0).getStatus());
         assertEquals(date, taskList.get(0).getTaskDate());
     }
@@ -146,22 +148,7 @@ class TodoDemoTest
         assertEquals(sorted.get(0).getTaskDate(), taskList.get(0).getTaskDate());
     }
 
-//    @Test
-//    void EditSuccessAndDateWrongFormat() throws ParseException
-//    {
-//        date = formatter.parse("16-10-2020");
-//        taskList.get(0).setTaskName("Test Edit");
-//        taskList.get(0).setProjectName("Edit Project");
-//        taskList.get(0).setStatus("Closed");
-//        taskList.get(0).setTaskDate(date);
-//
-//        taskList.set(0,new Task(taskList.get(0).getTaskName(), taskList.get(0).getProjectName(), taskList.get(0).getStatus(), taskList.get(0).getTaskDate()));
-//        assertEquals("Test Edit", taskList.get(0).getTaskName());
-//        assertEquals("Edit Project", taskList.get(0).getProjectName());
-//        assertEquals("Closed", taskList.get(0).getStatus());
-//        assertEquals(formatter.parse("2020-10-16"), taskList.get(0).getTaskDate());
-//
-//    }
+
 
 
 }
