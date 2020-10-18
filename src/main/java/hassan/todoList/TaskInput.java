@@ -18,7 +18,14 @@ public class TaskInput {
     private FileHandler fileHandler;
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-public void displayOption() throws ParseException
+
+    /**
+     * Display the option shows what the user can do with the application
+     *
+     * @throws ParseException Throws exception a detail message is a String
+     * that describes this particular exception.
+     */
+    public void displayOption() throws ParseException
     {
         demo = new UserInterface();
 
@@ -76,6 +83,11 @@ public void displayOption() throws ParseException
         }
     }
 
+    /**
+     * Add new task to the list of tasks.
+     * @throws ParseException A detail message is a String
+     * that describes this particular exception.
+     */
     private void addTask() throws ParseException
     {
         System.out.println("Enter the Task name   :  ");
@@ -104,6 +116,7 @@ public void displayOption() throws ParseException
         }
     }
 
+
     private void displayTask()
     {
         demo.displayInput();
@@ -111,6 +124,10 @@ public void displayOption() throws ParseException
         option = scanInput();
     }
 
+    /**
+     * Function to scan the user input from console.
+     * @return return the user input integer.
+     */
     private int scanInput()
     {
         Scanner sc = new Scanner(System.in);
@@ -118,6 +135,12 @@ public void displayOption() throws ParseException
 
     }
 
+    /**
+     * Function that holds the user input and send information to
+     * The editRecord method to submit changes.
+     * @throws ParseException A detail message is a
+     * String that describes this particular exception.
+     */
     private void editTask() throws ParseException
     {
         System.out.println("Enter the Task No you want  to Edit");
@@ -191,14 +214,13 @@ public void displayOption() throws ParseException
         }
     }
 
-
+    /**
+     * Function to scan the string user inputs from the console.
+     * @return return user input in a string form.
+     */
     public String scanString()
     {
         Scanner sc = new Scanner(System.in);
-
-        //sc.nextLine();
-        //sc.next();
-       // return sc.nextLine();
         return String.valueOf(sc.nextLine());
     }
 

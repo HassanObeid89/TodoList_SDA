@@ -11,13 +11,11 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TodoDemoTest
+class UserInterfaceTest
 {
     ArrayList<Task> taskList = new ArrayList<>();
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     Date date, date1, date2;
-
-
 
     /**
      *

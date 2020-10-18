@@ -56,7 +56,10 @@ public class FileHandler {
     }
 
 
-
+    /**
+     * Function to write from the file to the console when requested.
+     * @throws IOException
+     */
     public void outputWriter() throws IOException
     {
         BufferedWriter writer = new  BufferedWriter(new FileWriter(filename));
