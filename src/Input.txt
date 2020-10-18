@@ -1,0 +1,2 @@
+hassan;birthday;closed;2021-02-02
+ali;travel;open;2020-10-12
