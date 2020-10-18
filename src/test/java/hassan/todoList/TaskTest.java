@@ -14,39 +14,29 @@ class TaskTest {
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 
-
-
     @Test
-    void getTaskName()
-    {
-
-        Task taskTest = new Task("Test","Test Project","Open",date);
-        assertEquals("Test",taskTest.getTaskName());
-    }
-
-    @Test
-    void getProjectName()
+    void checkIfGettingTheCorrectProjectName()
     {
         Task taskTest = new Task("Test","Test Project","Open",date);
         assertEquals("Test Project",taskTest.getProjectName());
     }
 
     @Test
-    void getStatus()
+    void checkIfGettingTheCorrectTaskStatus()
     {
         Task taskTest = new Task("Test","Test Project","Open",date);
         assertEquals("Open",taskTest.getStatus());
     }
 
     @Test
-    void getTaskDate()
+    void getTaskDateSuccess()
     {
         Task taskTest = new Task("Test","Test Project","Open",date);
         assertEquals(date,taskTest.getTaskDate());
     }
 
     @Test
-    void setGetTaskName() throws ParseException
+    void setGetTaskNameSuccess() throws ParseException
     {
         Task taskTest = new Task("Test","Test Project","Open",date);
         taskTest.setTaskName("test");
