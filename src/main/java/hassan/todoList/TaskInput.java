@@ -13,13 +13,15 @@ public class TaskInput {
     private boolean setExit = false;
     private String  taskName, projectName,status, taskDate;
     private int changeField;
-    private TodoDemo demo;
+    private UserInterface demo;
     private Date date;
+    private FileHandler fileHandler;
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 public void displayOption() throws ParseException
     {
-        demo = new TodoDemo();
+        demo = new UserInterface();
+
         try{
             demo.inputReader();
         }catch(IOException a)
@@ -112,13 +114,7 @@ public void displayOption() throws ParseException
     private int scanInput()
     {
         Scanner sc = new Scanner(System.in);
-//        sc.nextInt();
-//        sc.nextLine();
-//        sc.next();
-       // return sc.nextInt();
-       return Integer.valueOf(sc.nextLine());
-
-
+        return Integer.valueOf(sc.nextLine());
 
     }
 
@@ -206,20 +202,21 @@ public void displayOption() throws ParseException
         return String.valueOf(sc.nextLine());
     }
 
-    private void deleteTask()
-    {
+    private void deleteTask() {
         System.out.println("Enter the Task No you want  to delete ");
         taskNo = scanInput();
         taskNo = taskNo - 1;
-        try{
-            demo.deleteRecord(taskNo);
-        }catch(IOException g)
-        {
-            System.out.println(" Problem occurred when trying to delete a record");
+
+            try {
+                demo.deleteRecord(taskNo);
+            } catch (IOException g) {
+                System.out.println(" Problem occurred when trying to delete a record");
+            }
+
+            System.out.println("Enter the option");
+            option = scanInput();
         }
-        System.out.println("Enter the option");
-        option = scanInput();
-    }
+
 
     private void saveExitTask()
     {
