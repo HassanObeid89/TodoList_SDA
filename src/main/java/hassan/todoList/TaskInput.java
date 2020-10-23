@@ -15,7 +15,6 @@ public class TaskInput {
     private int changeField;
     private UserInterface demo;
     private Date date;
-    private FileHandler fileHandler;
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 
@@ -128,6 +127,7 @@ public class TaskInput {
      * Function to scan the user input from console.
      * @return return the user input integer.
      */
+
     private int scanInput()
     {
         Scanner sc = new Scanner(System.in);
