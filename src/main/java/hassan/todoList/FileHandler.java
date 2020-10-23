@@ -10,51 +10,46 @@ import java.util.Date;
 
 public class FileHandler {
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    String filename = null;
+    private String filename = null;
     ArrayList<Task> todoList = new ArrayList<>();
 
     /**
      * Function to read data from the input file.
      * @throws IOException throws an exception when reading failed.
      */
-    public void inputReader() throws IOException
-    {
+    public void inputReader() throws IOException {
         Date date = null;
         JFileChooser chooser = new JFileChooser();
 
         File file = null;
-        int returnValue = chooser.showOpenDialog( null ) ;
-        if( returnValue == JFileChooser.APPROVE_OPTION )
-        {
-            file = chooser.getSelectedFile() ;
+        int returnValue = chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            file = chooser.getSelectedFile();
         }
-        if(file != null)
-        {
+        if (file != null) {
             filename = file.getPath();
         }
 
         BufferedReader inpFile = new BufferedReader(new FileReader(filename));
         String str;
-        try{
-            while((str = inpFile.readLine()) != null)
-            {
+        try {
+            while ((str = inpFile.readLine()) != null) {
                 String str1 = str.toString();
                 String[] arr = str1.split(";");
-                try{
+                try {
                     date = formatter.parse(arr[3]);
-                }catch(ParseException p){
+                } catch (ParseException p) {
                     System.out.println("Error while reading the Date field");
                 }
 
-                todoList.add(new Task(arr[0],arr[1],arr[2],date));
+                todoList.add(new Task(arr[0], arr[1], arr[2], date));
 
             }
-        }catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-
 
     /**
      * Function to write from the file to the console when requested.
